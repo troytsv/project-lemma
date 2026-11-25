@@ -1,0 +1,77 @@
+\begin{thebibliography}{10}
+
+\bibitem{barker}
+Colin Barker.
+\newblock A fourteen-block covering of 69 points by 21-subsets.
+\newblock Entry {$C(69,21,2)$} dated 28 December 2008 in D. M. Gordon's
+  \emph{La Jolla Coverings Repository}, version 1.2.1, 2026, 2008.
+\newblock
+  \href{https://doi.org/10.5281/zenodo.24119701}{doi:10.5281/zenodo.24119701}.
+
+\bibitem{canli}
+Arhan Canli.
+\newblock Covering design with 15 blocks for {$C(70,21,2)$}.
+\newblock Quantavane, 22 October 2026, 2026.
+\newblock \url{https://quantavane.com/results/coverings/c-70-21-2/}.
+
+\bibitem{furedi}
+Zolt{\'a}n F{\"u}redi.
+\newblock Maximum degree and fractional matchings in uniform hypergraphs.
+\newblock {\em Combinatorica}, 1:155--162, 1981.
+\newblock \href{https://doi.org/10.1007/BF02579271}{doi:10.1007/BF02579271}.
+
+\bibitem{furedi90}
+Zolt{\'a}n F{\"u}redi.
+\newblock Covering pairs by {$q^2+q+1$} sets.
+\newblock {\em Journal of Combinatorial Theory, Series A}, 54:248--271, 1990.
+\newblock
+  \href{https://doi.org/10.1016/0097-3165(90)90034-T}{doi:10.1016/0097-3165(90)90034-T}.
+
+\bibitem{furedi94}
+Zolt{\'a}n F{\"u}redi.
+\newblock Intersecting designs from linear programming and graphs of diameter
+  two.
+\newblock {\em Discrete Mathematics}, 127:187--207, 1994.
+\newblock
+  \href{https://doi.org/10.1016/0012-365X(92)00478-A}{doi:10.1016/0012-365X(92)00478-A}.
+
+\bibitem{gordon}
+Daniel~M. Gordon.
+\newblock {La Jolla Coverings Repository}.
+\newblock Version 1.2.1, 10 November 2026, 2026.
+\newblock
+  \href{https://doi.org/10.5281/zenodo.24119701}{doi:10.5281/zenodo.24119701}.
+
+\bibitem{gk}
+Barry Guiduli and Zolt{\'a}n Kir{\'a}ly.
+\newblock On intersecting hypergraphs.
+\newblock {\em Discrete Mathematics}, 182:139--151, 1998.
+\newblock
+  \href{https://doi.org/10.1016/S0012-365X(97)00136-2}{doi:10.1016/S0012-365X(97)00136-2}.
+
+\bibitem{hhs}
+Joanne Hall, Daniel Horsley, and Douglas~R. Stinson.
+\newblock Bounds on data limits for all-to-all comparison from combinatorial
+  designs.
+\newblock {\em Designs, Codes and Cryptography}, 92:2863--2879, 2024.
+\newblock
+  \href{https://doi.org/10.1007/s10623-024-01418-6}{doi:10.1007/s10623-024-01418-6}.
+
+\bibitem{irsi}
+{Institute for Recursive Self Improvement}.
+\newblock Covering design records and certificates.
+\newblock September certificate release, entry {$C(70,21,2)$}, 2026.
+\newblock \url{https://irsi.ai/tables.html}.
+
+\bibitem{meliwat}
+{Meliwat}.
+\newblock Covering hunt.
+\newblock Record \texttt{C70\_21\_2\_b15.txt}, 2026.
+\newblock \url{https://github.com/Meliwat/covering-hunt}.
+
+\bibitem{mills}
+W.~H. Mills.
+\newblock Covering designs {I}: Coverings by a small number of subsets.
+\newblock {\em Ars Combinatoria}, 8:199--315, 1979.
+
+\end{thebibliography}

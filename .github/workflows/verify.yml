@@ -26,6 +26,8 @@ jobs:
         run: |
           python l14/classify/verify_witness.py
           python l14/classify/verify_barker.py
+      - name: Check ten additional fifteen-block constructions
+        run: python results/verify_covering_certificates.py
 
   lean:
     name: Lean proof and axiom audit
@@ -53,5 +55,5 @@ jobs:
         run: lake --wfail build
       - name: Audit the C(70,21,2) theorem
         run: lake env lean -DwarningAsError=true Audit.lean
-      - name: Audit the L(14) theorem
+      - name: Audit the L(14) theorem and covering corollaries
         run: lake env lean -DwarningAsError=true AuditL14.lean

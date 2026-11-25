@@ -10,3 +10,5 @@
 8. Z. Füredi. *Intersecting designs from linear programming and graphs of diameter two.* Discrete Mathematics 127 (1994), 187–207. Conjecture 4.9 restates the bound in fractional matching terms. [DOI](https://doi.org/10.1016/0012-365X(92)00478-A) · [Author's copy, p. 193](https://www.renyi.hu/~furedi/PUBS3/furedi_122_intersecting_designs.pdf#page=7)
 
 Daniel M. Gordon's La Jolla Covering Repository archive records the earlier 16-block upper bound from Jan de Heer and Steve Muir. [Archived dataset](https://doi.org/10.5281/zenodo.19735294)
+
+The ten supplementary block lists and archive-derived comparison fields are from Daniel M. Gordon’s La Jolla Coverings Repository v1.2.1, under CC BY 4.0. Construction credits include Michael Dambmann, Jan de Heer, Steve Muir and LJCR. The block lists retain the original labels. The comparison adds calculated bounds and a contemporary upper bound. Per-record credits, source hashes and extraction details accompany the data. [Attribution and replay](results/README.md) · [Versioned archive](https://doi.org/10.5281/zenodo.24119701) · [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)

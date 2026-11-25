@@ -1,0 +1,20 @@
+{
+  "title": "Project Lemma: The first Mills number on fourteen vertices",
+  "upload_type": "software",
+  "version": "1.0.0",
+  "creators": [
+    {
+      "name": "Valiyaparampil, Troy"
+    }
+  ],
+  "description": "<p>Software and verification artifacts accompanying a manuscript on the first Mills number on fourteen vertices. The manuscript establishes the exact value 7/23, equivalently the maximum fractional matching number 23/7 for intersecting hypergraphs on fourteen vertices. This is the value predicted by the q = 3 case of Füredi's conjecture. A covering-number corollary gives C(70,21,2) = 15 using a previously published construction. This release provides pinned Lean 4 sources, construction certificates, and reproduction instructions.</p><p>Troy Valiyaparampil initiated and directed the research. OpenAI GPT-6.2 Astra contributed to problem and hypothesis selection and developed the mathematical arguments. GPT-6.2 Astra and Sol sessions contributed to computational experiments, drafting or review, and Lean formalization. The repository disclosure records the tool roles and the available verification evidence. The Lean proof and certificate verifiers can be run independently.</p><p>Original project materials are supplied under MIT. Reproduced La Jolla Covering Repository data (Daniel M. Gordon and credited constructors) and Arhan Canli’s covering data retain CC BY 4.0. Detailed attribution and modifications are recorded in REFERENCES.md and results/README.md.</p>",
+  "license": "MIT",
+  "keywords": [
+    "covering designs",
+    "first Mills number",
+    "intersecting hypergraphs",
+    "fractional matching",
+    "Lean 4",
+    "formal verification"
+  ]
+}

@@ -1,20 +1,22 @@
 cff-version: 1.2.0
-message: "If you use these proofs or their verification code, please cite this work."
-title: "Project Lemma: C(70,21,2) and the first Mills number L(14)"
+message: "Please cite this version of the reproducibility artifact when using the proof or construction checks."
+title: "Project Lemma: The First Mills Number on Fourteen Vertices"
 type: software
+version: "1.0.0"
 authors:
   - family-names: Valiyaparampil
     given-names: Troy
 abstract: >-
-  Lean 4 proofs that the covering number C(70,21,2) is 15 and the first
-  Mills number L(14) is 7/23. The latter verifies the q=3 case of
-  Füredi's conjecture from 1990 and 1994. The repository includes independent covering
-  certificate verifiers. The papers credit Troy Valiyaparampil and GPT-6.2
-  Astra. GPT-6.2 Sol sessions contributed review, certificate checks, and
-  Lean modules.
+  Reproducibility artifact for the q = 3 case of Füredi's conjecture.
+  The manuscript and Lean 4 development establish L(14) = M1(14) = 7/23
+  and the maximum fractional matching number 23/7. The repository includes
+  a formal proof, construction verifiers, a comparison with covering records,
+  and documentation of AI-developed mathematics and formalization.
 license: MIT
 keywords:
   - covering designs
-  - Lean 4
+  - intersecting hypergraphs
   - fractional matchings
-  - Mills numbers
+  - first Mills number
+  - formal verification
+  - Lean 4

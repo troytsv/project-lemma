@@ -1,4 +1,8 @@
-# Lean 4 proof that fourteen blocks are impossible
+# Lean 4 formalization
+
+See the [verification report](VERIFICATION.md) for the principal theorems, build instructions, and axiom audit for the fourteen-vertex theorem and its covering corollaries.
+
+## Original fourteen-block obstruction
 
 `C7021.noFourteenBlockCover` quantifies over every function assigning a finite subset of 70 points to each of 14 block indices. If each block has 21 elements, some two distinct points share no block. Indexed blocks may even repeat.
 
@@ -36,6 +40,6 @@ The audit fails on any additional axiom, including a proof placeholder. These th
 | Lemma.lean | Turn an arbitrary pair covering into incidence patterns, find a block outside the rank-five patterns, and derive that a natural number times 2 equals 9. |
 | Audit.lean | Restate the finite covering contract independently and inspect the final theorem's transitive axiom dependencies. |
 
-This formalization checks the lower bound. The paper's upper bound uses a published 15-block certificate and is checked separately by the project's two Python verifiers. The formal proof uses finite elimination over rational weights for the paper's support-reduction step. Codex developed the formalization with GPT-6.2 Sol agents, and Lean checked the resulting terms locally.
+The original proof uses finite elimination over rational weights for its support-reduction step. The separate fourteen-vertex development uses real weights, checks the published 15-block certificate, and derives the exact covering number for 70 points. The project's Python verifiers also check the certificate.
 
 The pinned mathlib commit is `f897ebcf72cd16f89ab4577d0c826cd14afaafc7`. The [official Lean release](https://github.com/leanprover/lean4/releases/expanded_assets/v4.24.0) lists SHA-256 checksums for each platform archive.

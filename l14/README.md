@@ -2,7 +2,7 @@
 
 The all-to-all comparison data limit is $L(14)=7/23$. The largest fractional matching number over intersecting hypergraphs on fourteen vertices is $23/7$. This establishes the $q=3$ case of Füredi's conjecture. [Füredi, 1990, Conjecture 6.3](https://doi.org/10.1016/0097-3165(90)90034-T) · [Füredi, 1994, Conjecture 4.9](https://doi.org/10.1016/0012-365X(92)00478-A)
 
-Troy Valiyaparampil and GPT-6.2 Astra give the mathematical argument in the [paper](paper.pdf) and its [LaTeX source](paper.tex).
+The consolidated [paper](../paper.pdf) and its [LaTeX source](../paper.tex) give the mathematical argument. The [contribution disclosure](../AI_DISCLOSURE.md) records Troy Valiyaparampil’s direction of the project and the models’ mathematical and formalization work.
 
 ## Reproduce the checks
 
@@ -33,8 +33,9 @@ The audit independently states the infimum and maximum contracts. It rejects tra
 | [ThresholdCore](../formal/L14/ThresholdCore.lean), [SharpData](../formal/L14/SharpData.lean), [Outside](../formal/L14/Outside.lean) | Bound the rank, mass, and load deficits above total weight 69 when each load is at most 21. |
 | [Eleven](../formal/L14/Eleven.lean), [HighRanks](../formal/L14/HighRanks.lean), [TwoQuints](../formal/L14/TwoQuints.lean) | Exclude every sparse family above the threshold by its rank counts and incidences. |
 | [Sharp](../formal/L14/Sharp.lean) | Combine the sparse bound with the witness to prove `L14.mills_eq_seven_twentyThree` and `L14.fractional_matching_maximum`. |
+| [Covering](../formal/L14/Covering.lean), [CoveringWitnesses](../formal/L14/CoveringWitnesses.lean) | Prove the general covering lower bound and the two exact families for every positive replication factor. |
 | [Plane](../formal/L14/Plane.lean) | Check the earlier projective-plane witness with mass $13/4$ under unit vertex capacities. |
-| [AuditL14](../formal/AuditL14.lean) | Check the two theorem contracts and axiom requirements. |
+| [AuditL14](../formal/AuditL14.lean) | Check the sharp extremal theorem contracts, covering corollaries and axiom requirements. |
 
 ## Witness provenance
 
@@ -52,4 +53,4 @@ The script verifies the archive checksum and compares exact ratios for all 716 l
 
 ## Rebuild the paper
 
-From the repository root with Tectonic 0.17.0+20260731, set `SOURCE_DATE_EPOCH=1795564800` and run `tectonic l14/paper.tex`. Add `--only-cached` if the TeX packages are already available locally. The bundled PDF has SHA-256 `0654c7ebd08ad5bb7b49667d143bc2a917583bfd56208d85f7d0ce170757d7d9`.
+The [release instructions](../verification/README.md) give the build command for the consolidated manuscript.
