@@ -102,6 +102,9 @@ def ingest(db,rows):
             require(original==r, f"{owner} differs; revise using its current revision")
             counts["unchanged"]+=1
         else:
+            same_statement=bool({i for i in identities(r) & identities(original) if i.startswith("statement:")})
+            require(same_statement or r.get("equivalent_to")==owner,
+                    f"shared label with {owner} but different statement; qualify aliases or verify equivalent_to")
             if r["status"]=="solved" and original["status"]!="solved":
                 resolved=dict(original,status="solved",unresolved=r["unresolved"],checked=r["checked"],
                               sources=list(dict.fromkeys(original["sources"]+r["sources"])),

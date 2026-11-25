@@ -53,6 +53,16 @@ class Workflow(unittest.TestCase):
         code="import sqlite3,os,sys;c=sqlite3.connect(sys.argv[1]);c.execute('DELETE FROM candidates');os._exit(7)"
         self.assertEqual(subprocess.run([sys.executable,"-c",code,str(self.db)]).returncode,7)
         self.assertEqual(len(json.loads(self.cli("export"))),1)
+    def test_related_parameter_cases_are_distinct(self):
+        r=self.prospective()
+        s=dict(r,key="different-order",title="Another order",statement="Test Q at another order.",
+               aliases=["common research method"])
+        r["aliases"]=["common research method"]
+        self.cli("ingest",self.batch(r,s),ok=False)
+        self.assertEqual(json.loads(self.cli("export")),[])
+        s["aliases"]=["different parameter instance"]
+        self.cli("ingest",self.batch(r,s))
+        self.assertEqual(len(json.loads(self.cli("rank"))),2)
     def test_scores_handoff_and_revision(self):
         r=self.prospective(); self.cli("ingest",self.batch(r))
         rank=json.loads(self.cli("rank"))[0]

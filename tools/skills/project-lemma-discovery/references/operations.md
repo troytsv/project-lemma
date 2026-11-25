@@ -4,7 +4,7 @@ Use Python 3 and the installed skill directory when locating scripts. From the r
 
 | Command | Operation |
 |---|---|
-| ingest FILE | Import the entire batch atomically. Same key and contents replay cleanly. Statement, title and curated aliases detect duplicates across keys. Inspect reported collisions. Compare equivalent formulations manually. |
+| ingest FILE | Import the entire batch atomically. Same key and contents replay cleanly. Statement, title and curated aliases detect duplicates across keys. Inspect reported collisions. Aliases identify the same objective including its parameters. Keep general search terms and methods outside aliases. A shared label with different statements stops the batch. After mathematical reconciliation, qualify the labels or provide equivalent_to with the canonical key. |
 | show KEY | Return a record and its revision. An ingested alternate key resolves to the original. |
 | revise FILE --expected REVISION | Replace one complete canonical record after a probe/novelty check. A concurrent or stale revision is rejected. Retain superseded records in history. |
 | status KEY STATE --reason TEXT | Change status with an evidence-based reason. Solved records cannot advance. All five gates and justified scores are required for the shortlist and recommendations. |
