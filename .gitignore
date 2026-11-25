@@ -1,11 +1,9 @@
 .lake/
 __pycache__/
 *.py[cod]
-/baseline/irsi-original.txt
-/baseline/meliwat15.txt
-/paper.aux
-/paper.log
-/paper.out
-/l14/paper.aux
-/l14/paper.log
-/l14/paper.out
+**/certificates/irsi-original.txt
+**/certificates/meliwat15.txt
+*.aux
+*.log
+*.out
+*.blg

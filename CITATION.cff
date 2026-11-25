@@ -1,22 +1,14 @@
 cff-version: 1.2.0
-message: "Please cite this version of the reproducibility artifact when using the proof or construction checks."
-title: "Project Lemma: The First Mills Number on Fourteen Vertices"
+message: "Cite Project Lemma for the research repository. Use the problem-specific citation when citing a mathematical result."
+title: "Project Lemma"
 type: software
 version: "1.0.0"
+date-released: 2026-11-25
 authors:
   - family-names: Valiyaparampil
     given-names: Troy
-abstract: >-
-  Reproducibility artifact for the q = 3 case of Füredi's conjecture.
-  The manuscript and Lean 4 development establish L(14) = M1(14) = 7/23
-  and the maximum fractional matching number 23/7. The repository includes
-  a formal proof, construction verifiers, a comparison with covering records,
-  and documentation of AI-developed mathematics and formalization.
-license: MIT
-keywords:
-  - covering designs
-  - intersecting hypergraphs
-  - fractional matchings
-  - first Mills number
-  - formal verification
-  - Lean 4
+repository-code: "https://github.com/troytsv/project-lemma"
+url: "https://github.com/troytsv/project-lemma"
+license:
+  - MIT
+  - CC-BY-4.0

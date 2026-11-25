@@ -53,6 +53,14 @@ def main():
                      if row["earlier_project_excludes_14"] == "0" and row["outcome"] == "exact"}
     if len(covers) != 10 or covers.keys() != expected_keys:
         raise SystemExit("Expected ten certificates matching the exact cells beyond 3/10.")
+    with (directory / "ten-exact.csv").open(encoding="utf-8", newline="") as supplement:
+        exact = list(csv.DictReader(supplement))
+    keys = {f"C({r['v']},{r['k']},{r['t']})" for r in exact}
+    if len(exact) != 10 or keys != expected_keys:
+        raise SystemExit("Supplementary table and certificate keys disagree.")
+    for row in exact:
+        if row["covering_number"] != "15" or 7 * int(row["v"]) <= 23 * int(row["k"]):
+            raise SystemExit(f"Incorrect exact covering consequence: {row}")
     for key, blocks in covers.items():
         print(f"{key}: verified 15 blocks and {verify(key, blocks, 15)} pairs.")
     if args.archive_prefix:

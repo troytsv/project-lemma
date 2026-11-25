@@ -4,7 +4,7 @@ import unittest
 from verify_dual import verify
 
 
-BASELINE = Path(__file__).resolve().parents[1] / "baseline"
+BASELINE = Path(__file__).resolve().parents[2] / "certificates"
 # Each permutation maps 1-based indices from known15.txt to the named file.
 RELABELINGS = {
     "meliwat15.txt": (

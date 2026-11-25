@@ -15,10 +15,10 @@ The regression tests include explicit permutations that map the Quantavane const
 
 IRSI lists the ZIP SHA-256 as `baba879c2874f0572ef7eae95f06ba9959c99a289706da0333d69563d781ca25`. [IRSI table and archive information](https://irsi.ai/tables.html)
 
-With both files available, run from the repository root.
+With both files available, run from the problem directory.
 
 ```text
-python verify_pairs.py baseline/known15.txt baseline/meliwat15.txt baseline/irsi-original.txt
-python search/verify_dual.py baseline/known15.txt baseline/meliwat15.txt baseline/irsi-original.txt
-python -B -m unittest discover -s search -v
+python verification/verify_pairs.py certificates/known15.txt certificates/meliwat15.txt certificates/irsi-original.txt
+python verification/search/verify_dual.py certificates/known15.txt certificates/meliwat15.txt certificates/irsi-original.txt
+python -B -m unittest discover -s verification/search -v
 ```

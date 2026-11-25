@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "Please cite this preprint when using its mathematical results."
+title: "The First Mills Number on Fourteen Vertices: The q = 3 Case of Füredi's Conjecture"
+version: "1.0.0"
+date-released: 2026-11-25
+authors:
+  - family-names: Valiyaparampil
+    given-names: Troy
+repository-code: "https://github.com/troytsv/project-lemma"
+url: "https://github.com/troytsv/project-lemma/releases/tag/mills-14-v1.0.0"
+license: CC-BY-4.0
+preferred-citation:
+  type: unpublished
+  authors:
+    - family-names: Valiyaparampil
+      given-names: Troy
+  title: "The First Mills Number on Fourteen Vertices: The q = 3 Case of Füredi's Conjecture"
+  year: 2026
+  version: "1.0.0"
+  url: "https://github.com/troytsv/project-lemma/releases/tag/mills-14-v1.0.0"

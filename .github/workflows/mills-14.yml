@@ -1,0 +1,109 @@
+name: Problem 001 verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'problems/001-mills-number-14/**'
+      - '.github/workflows/mills-14.yml'
+  pull_request:
+    paths:
+      - 'problems/001-mills-number-14/**'
+      - '.github/workflows/mills-14.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    working-directory: problems/001-mills-number-14
+
+jobs:
+  certificates:
+    name: Certificates and supplementary results
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Check covering certificates, numerical cases and the supplementary table
+        run: |
+          python3 l14/classify/verify_witness.py
+          python3 l14/classify/verify_barker.py
+          python3 verification/verify_pairs.py certificates/known15.txt
+          python3 verification/search/verify_dual.py certificates/known15.txt
+          python3 -B -m unittest discover -s verification/search -v
+          python3 verification/check_ranks.py
+          python3 results/verify_covering_certificates.py
+
+  manuscript:
+    name: Compile manuscript and bibliography
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: problems/001-mills-number-14/paper
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Install standard LaTeX packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-latex-recommended texlive-fonts-recommended poppler-utils
+      - name: Compile from sources and check references
+        run: |
+          export SOURCE_DATE_EPOCH=1795564800
+          mkdir "$RUNNER_TEMP/manuscript"
+          cp paper.tex references.bib "$RUNNER_TEMP/manuscript/"
+          cd "$RUNNER_TEMP/manuscript"
+          pdflatex -halt-on-error -interaction=batchmode paper
+          bibtex paper
+          pdflatex -halt-on-error -interaction=batchmode paper
+          pdflatex -halt-on-error -interaction=batchmode paper
+          if grep -Ei 'undefined references|Citation .* undefined|undefined citations' paper.log; then exit 1; fi
+          pdfinfo paper.pdf
+          diff -u paper.bbl "$GITHUB_WORKSPACE/problems/001-mills-number-14/paper/paper.bbl"
+
+  lean:
+    name: Clean Lean build and theorem audits
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    defaults:
+      run:
+        working-directory: problems/001-mills-number-14/formal
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
+        with:
+          persist-credentials: false
+      - name: Cache the verified Lean distribution archive
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+        with:
+          path: ~/.cache/project-lemma/lean-4.24.0-linux.tar.zst
+          key: lean-dist-ubuntu-x64-4.24.0-b14f5e51
+      - name: Install the pinned Lean release
+        run: |
+          archive="$HOME/.cache/project-lemma/lean-4.24.0-linux.tar.zst"
+          mkdir -p "$(dirname "$archive")"
+          if [ ! -s "$archive" ]; then
+            curl --fail --location --retry 3 --output "$archive" https://github.com/leanprover/lean4/releases/download/v4.24.0/lean-4.24.0-linux.tar.zst
+          fi
+          printf '%s  %s\n' b14f5e5159219dd1a1956c3b806813319f5e94ccd5bdfd56f54520609a5bb5ec "$archive" | sha256sum --check
+          tar --extract --zstd --file "$archive" --directory "$RUNNER_TEMP"
+          echo "$RUNNER_TEMP/lean-4.24.0-linux/bin" >> "$GITHUB_PATH"
+      - name: Retrieve pinned upstream libraries
+        run: lake exe cache get Mathlib.Tactic Mathlib.Data.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
+      - name: Verify dependency revisions and build all project sources
+        run: |
+          python3 - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+          for dep in json.loads(Path("lake-manifest.json").read_text())["packages"]:
+              rev = subprocess.check_output(["git", "-C", ".lake/packages/" + dep["name"], "rev-parse", "HEAD"], text=True).strip()
+              assert rev == dep["rev"], dep["name"]
+          PY
+          lake --wfail build
+          lake env lean -DwarningAsError=true Audit.lean
+          lake env lean -DwarningAsError=true AuditL14.lean

@@ -4,11 +4,13 @@ For integers $2\le k\le v$, write $C(v,k,2)$ for the least number of $k$-subsets
 
 More generally, fourteen machines storing data for all-to-all comparison must have a machine holding at least $7/23$ of total data weight. With $v$ equal-sized items, some machine must hold at least $\lceil 7v/23\rceil$ items. The Barker design attains the fraction for 69 items. With per-vertex capacity one the corresponding maximum total fractional matching mass is $23/7$.
 
+[Supplementary table of the ten exact covering consequences](ten-exact.csv) · [Full 39-row comparison](pair-coverings.csv)
+
 ## Two infinite families
 
 Given a $(v,k,2)$-covering, replace every point by a set of $n$ copies. Replace every block by the union of the copies of its points. Pairs of copies of different points inherit a covering block from their originals. Copies of the same point share any block containing that point. This gives $C(nv,nk,2)\le C(v,k,2)$ for positive integers $n$.
 
-- **$C(70n,21n,2)=15$.** Use the fifteen-block construction for $(70,21,2)$ and the strict bound above, since $7\cdot70>23\cdot21$. IRSI posted a fifteen-block covering in September 2026. Meliwat and Arhan Canli (Quantavane) posted fifteen-block coverings in October. The repository has point and block relabelings for comparison of these certificates. [IRSI](https://irsi.ai/tables.html), [Meliwat](https://github.com/Meliwat/covering-hunt), [Quantavane](https://quantavane.com/results/coverings/c-70-21-2/), [certificate replay](../baseline/README.md)
+- **$C(70n,21n,2)=15$.** Use the fifteen-block construction for $(70,21,2)$ and the strict bound above, since $7\cdot70>23\cdot21$. IRSI posted a fifteen-block covering in September 2026. Meliwat and Arhan Canli (Quantavane) posted fifteen-block coverings in October. The repository has point and block relabelings for comparison of these certificates. [IRSI](https://irsi.ai/tables.html), [Meliwat](https://github.com/Meliwat/covering-hunt), [Quantavane](https://quantavane.com/results/coverings/c-70-21-2/), [certificate replay](../certificates/README.md)
 - **$C(69n,21n,2)=14$.** Use Barker's fourteen-block covering, scaled as above. A cover with at most thirteen blocks would have $k/v\ge L(13)=4/13$, whereas $21/69=7/23<4/13$. This family follows from the archived construction and the earlier $L(13)$ result. [La Jolla v1.2.1](https://doi.org/10.5281/zenodo.24119701), [Hall, Horsley and Stinson, Theorem 1.3](https://doi.org/10.1007/s10623-024-01418-6)
 
 ## Comparison with dated records
@@ -49,4 +51,4 @@ Download [coverdata.json](https://zenodo.org/api/records/24119701/files/coverdat
 python -B results/compare_coverings.py coverdata.json > results/pair-coverings.csv
 ```
 
-`outcome=exact` means the theorem's lower bound and the compared upper bound coincide. Each `*_excludes_14` field records whether the named older theorem suffices by itself. The reduced parameter pair and common factor flag rows where scaling is possible. Dated upper bounds are read from the archive index. The script checks their consistency with the lower bounds. The two family seeds have separate [Barker](../l14/classify/verify_barker.py) and [Quantavane](../baseline/README.md) certificate checkers.
+`outcome=exact` means the theorem's lower bound and the compared upper bound coincide. Each `*_excludes_14` field records whether the named older theorem suffices by itself. The reduced parameter pair and common factor flag rows where scaling is possible. Dated upper bounds are read from the archive index. The script checks their consistency with the lower bounds. The two family seeds have separate [Barker](../l14/classify/verify_barker.py) and [Quantavane](../certificates/README.md) certificate checkers.

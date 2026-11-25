@@ -1,6 +1,6 @@
 # Independent combinatorial proof audit
 
-25 November 2026. I checked the argument in the original fourteen-vertex draft directly, including the reductions before the final packing step, and found no gap or counterexample. The [consolidated manuscript](../paper.tex) incorporates the clarification about rational weights below. This was a separate AI-assisted proof review. External human review remains pending. [Original drafts and commit references](history.md)
+25 November 2026. I checked the argument in the original fourteen-vertex draft directly, including the reductions before the final packing step, and found no gap or counterexample. The [consolidated manuscript](../paper/paper.tex) incorporates the clarification about rational weights below. This was a separate AI-assisted proof review. External human review remains pending. [Original drafts and commit references](history.md)
 
 ## Formulation and support
 

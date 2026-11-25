@@ -2,11 +2,11 @@
 
 The all-to-all comparison data limit is $L(14)=7/23$. The largest fractional matching number over intersecting hypergraphs on fourteen vertices is $23/7$. This establishes the $q=3$ case of Füredi's conjecture. [Füredi, 1990, Conjecture 6.3](https://doi.org/10.1016/0097-3165(90)90034-T) · [Füredi, 1994, Conjecture 4.9](https://doi.org/10.1016/0012-365X(92)00478-A)
 
-The consolidated [paper](../paper.pdf) and its [LaTeX source](../paper.tex) give the mathematical argument. The [contribution disclosure](../AI_DISCLOSURE.md) records Troy Valiyaparampil’s direction of the project and the models’ mathematical and formalization work.
+The consolidated [paper](../paper/paper.pdf) and its [LaTeX source](../paper/paper.tex) give the mathematical argument. The [contribution disclosure](../../../AI_DISCLOSURE.md) records Troy Valiyaparampil’s direction of the project and the models’ mathematical and formalization work.
 
 ## Reproduce the checks
 
-Run the integer verifiers from the repository root with Python 3.10 or later.
+Run the integer verifiers from the problem directory with Python 3.10 or later.
 
 ```text
 python l14/classify/verify_witness.py
@@ -43,7 +43,7 @@ The [exploratory search source](classify/Search.cs) and [recorded run](classify/
 
 The La Jolla archive dates Colin Barker's isomorphic 14-block covering to 28 December 2008. The [provenance note](prior-work.md) records the exact relabeling and the projective-plane construction it recovers. Daniel M. Gordon maintains the archived dataset under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). [Archived covering record](https://doi.org/10.5281/zenodo.24119701)
 
-To replay the historical index check, download `coverdata.json` from archive version 1.2.1. Pass its path to the script from the repository root.
+To replay the historical index check, download `coverdata.json` from archive version 1.2.1. Pass its path to the script from the problem directory.
 
 ```text
 python l14/classify/check_archive.py /path/to/coverdata.json
