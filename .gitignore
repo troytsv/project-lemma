@@ -1,0 +1,8 @@
+.lake/
+__pycache__/
+*.py[cod]
+/baseline/irsi-original.txt
+/baseline/meliwat15.txt
+/paper.aux
+/paper.log
+/paper.out

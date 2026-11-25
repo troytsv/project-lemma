@@ -1,0 +1,21 @@
+Fresh repository source replay, 2026-11-25
+Lean (version 4.24.0, x86_64-w64-windows-gnu, commit 797c613eb9b6d4ec95db23e3e00af9ac6657f24b, Release)
+Every dependency checkout matched lake-manifest.json. The import path contained only pinned dependency objects and a fresh output directory. All five files were checked with warningAsError enabled.
+
+PASS  Lemma/Sparse.lean
+PASS  Lemma/Incidence.lean
+PASS  Lemma/Ranks.lean
+PASS  Lemma.lean
+PASS  Audit.lean
+'C7021.noFourteenBlockCover' depends on axioms: [propext, Classical.choice, Quot.sound]
+
+SHA-256 of the replay inputs
+42779d67b81608af8a12aa4328d2ab47ca201925b3b2bd68369587b5340bb434  lean-toolchain
+7b4194513e57b7cb0298658cb7ffb52e7f7ac723b2cfe6089afa7e94dd87aed4  lakefile.toml
+86d13aa89597b767165524822abb98ac0bb002e14e2abc68e885404ec8a84bae  lake-manifest.json
+f69c32be3daf45c44fcf0cc34965da8774baad2b969a0df62c476a060705f19a  Lemma/Sparse.lean
+507f2c62f9a5599114df051f6af06557a68899592e9f622b1a438d18eaad6806  Lemma/Incidence.lean
+c4d6969ed2bc3333c0e1b22bd6fe8a97ec97bb17e323e9b0338ccd15136e670b  Lemma/Ranks.lean
+32e852f73ce1740b7455816da422702e2da021ea025779f4ed9ea3f3990d778a  Lemma.lean
+346905096a67ba2331b54fadc6b89a861ba39390c80db56b532e446856d7a913  Audit.lean
+cd356ea598f2f78e5749f377ae78e3530586fb1422c0f948ba0c0367bfa7d117  README.md
