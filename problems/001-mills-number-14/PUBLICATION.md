@@ -1,0 +1,21 @@
+# Publication record
+
+## Research release
+
+Troy Valiyaparampil. *The First Mills Number on Fourteen Vertices: The q = 3 Case of Füredi's Conjecture*. Version 1.0.0, 25 November 2026. Project Lemma, Problem 001. Public research preprint. [Versioned GitHub release](https://github.com/troytsv/project-lemma/releases/tag/mills-14-v1.0.0)
+
+The release tag `mills-14-v1.0.0` identifies commit `13b6ca12d0ae6bdfe3de0f6d3c78b5ee0756a1d5`. The release supplies the manuscript, complete reproducibility archive and SHA-256 manifest. On 25 November all three downloads matched GitHub's asset digests. The paper and source ZIP also match the hashes in the released manifest. [Release checksums](https://github.com/troytsv/project-lemma/releases/download/mills-14-v1.0.0/SHA256SUMS.txt) · [Formal verification](formal/VERIFICATION.md)
+
+## Zenodo
+
+On 25 November 2026, searches of Zenodo's public records by title and creator found no matching record. The author requested guidance on whether the preprint qualifies under Zenodo's generative-AI policy. The inquiry described the author's direction of the project and the models' contributions to problem selection, mathematical argument, formalization and writing. Zenodo acknowledged receipt. An eligibility decision, public deposit date and DOI are pending. Use the release citation above in the interim. [Zenodo depositor policy](https://support.zenodo.org/help/en-gb/13-policies/227-what-is-your-usage-policy-for-generative-ai-for-depositors) · [Project disclosure](../../AI_DISCLOSURE.md)
+
+## Covering Repository
+
+On 25 November 2026, the live search was restricted to ordinary pair coverings (T = M = 2), with all available point counts. The public interface offered block sizes 2 through 25. Size 2 returned no rows. For each size 3 through 25 it displayed every point count from k + 1 through 99. This yielded 1,955 distinct rows. Of those, 1,229 satisfied 7v > 23k and 39 still listed a lower bound below 15, in each case 14. Of those 39 entries, 20 had a listed construction of size 15 and 19 had an upper bound of 16 or 17. The comparison includes the seventy-point entry and all ten examples from the manuscript supplement. The CSV records the bounds visible on that date, the proposed lower bound, any resulting exact value, and links to the live entry and Corollary 4. [Complete comparison of affected entries](results/covering-repository-2026-11-25.csv) · [Public search](https://www.coveringrepository.com/systems.aspx?k=21&t=2&m=2)
+
+One notification titled “Formally verified lower bounds for pair covering numbers” was sent to the repository's official general-report address, `info@coveringrepository.com`, with the CSV attached and links to the released paper and verification materials. It reports the lower-bound theorem and credits existing constructions for the upper bounds. Maintainer acknowledgment, acceptance and table changes remain unconfirmed. [Official contact page](https://www.coveringrepository.com/cr_contact.aspx)
+
+## Palomar
+
+Palomar accepts Lean results at fixed public commits, including projects in a subdirectory. Its current rules require module headers in every Lean source, a separately auditable statement and proved solution for Comparator, a Comparator configuration and structured formalization metadata. The released tree has 21 Lean files without the required module header. Its existing theorem audit imports the proved project. Preparing a compatible snapshot would require a source migration and a fresh verification run. No registration was attempted. [Palomar submission requirements](https://palomar-registry.org/how-to-submit)

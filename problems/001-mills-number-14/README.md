@@ -13,6 +13,8 @@ The universal lower bound applies to arbitrary nonnegative real weights. For $2\
 
 **Status.** Public research preprint, version 1.0.0, 25 November 2026. The proof is formally verified in Lean. Independent peer review remains open.
 
+[Publication record, recommended citation and subsequent notifications](PUBLICATION.md)
+
 ## Reproduce the results
 
 With Python 3.10 or later, run these commands from the problem directory.
