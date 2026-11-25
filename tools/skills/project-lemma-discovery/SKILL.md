@@ -14,6 +14,8 @@ Work from the Project Lemma repository. Keep the campaign under `discovery/priva
 | Probe | Run bounded, conventional computation or a mathematical reduction. Preserve inputs, code, budgets, time, baseline and exact outcomes. Verify any witness separately. Reassess the scores and record a reason to continue or stop. |
 | Recommend | Rank eligible candidates, compare fields and valuable partial outcomes. Generate a standalone handoff for every recommended candidate, explaining why it beats alternatives and when to switch. |
 
+Keep the seven-factor base out of 100. For eligible candidates, subtract 0.8 × (10 − public competition headroom on a 0–10 scale), floored at zero. Report both numbers. A failed gate always excludes a candidate, even with a base of 100.
+
 An open label or an unsuccessful search cannot certify global priority. Distinguish a sourced historical question from a new question derived during this campaign. Treat a claimed proof, a solved special case, an open family and a missing formalization separately. Keep retrospective evidence out of contemporary estimates.
 
 Use the existing subscription, local computer and freely readable sources. Never spend, submit, publish, register a result, or contact a maintainer as part of ordinary discovery. Keep the public skill portable and the working database, experiment outputs and recommendation files private. End at the handoff. Creating a permanent numbered investigation or beginning a full attempt requires the user's selection.
