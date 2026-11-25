@@ -1,0 +1,89 @@
+version: "v0.4"
+project:
+  name: "The first Mills number on fourteen vertices"
+  description: >-
+    An intersecting family of subsets of fourteen vertices with nonnegative weights
+    of total mass one has a vertex of load at least 7/23. This bound is attained.
+    Equivalently, the greatest fractional matching mass under unit vertex capacities
+    is 23/7. These equalities give the q = 3 case of Füredi's conjecture.
+    Pair coverings by blocks of size at most k need at least fifteen blocks when
+    7v > 23k and v ≥ 2. The exact minima for (70n,21n) and (69n,21n)
+    are fifteen and fourteen respectively for every positive integer n.
+  authors: ["OpenAI GPT-6.2 Astra and GPT-6.2 Sol (formalization via Codex)"]
+  responsible_maintainers: ["Troy Valiyaparampil"]
+  license: MIT
+classification:
+  arxiv: [math.CO]
+  msc2020: [05B40, 05C65]
+sources:
+  - title: "The First Mills Number on Fourteen Vertices: The q = 3 Case of Füredi's Conjecture"
+    authors: ["Troy Valiyaparampil"]
+    type: preprint
+    relationship: formalizes
+    id: https://github.com/troytsv/project-lemma/releases/tag/mills-14-v1.0.0
+    note: >-
+      The preprint and original Lean proofs were released together. The human author
+      initiated and directed the project. The models selected the question and
+      developed the argument, formalization and manuscript.
+  - title: "Covering pairs by q² + q + 1 sets"
+    authors: ["Zoltán Füredi"]
+    relationship: background
+    id: https://doi.org/10.1016/0097-3165(90)90034-T
+    note: Source of the conjecture. Only its q = 3 case is claimed.
+  - title: "A fourteen-block covering of 69 points by 21-subsets"
+    authors: ["Colin Barker"]
+    relationship: adapts
+    id: https://doi.org/10.5281/zenodo.24119701
+    note: The 2008 covering in the La Jolla archive supplies the attaining construction.
+  - title: "Covering design with 15 blocks for C(70,21,2)"
+    authors: ["Arhan Canli"]
+    relationship: adapts
+    id: https://quantavane.com/results/coverings/c-70-21-2/
+    note: The incidence columns certify the upper bound for the 70-point family.
+related_formalizations:
+  - id: https://github.com/troytsv/project-lemma/tree/13b6ca12d0ae6bdfe3de0f6d3c78b5ee0756a1d5/problems/001-mills-number-14/formal
+    relationship: builds-on
+    note: This submission ports the released development and restates the contracts for Comparator.
+status:
+  scope: >-
+    The Challenge specifies all seven results in finite-set and real-number notation.
+    Pair covering counts use indexed blocks, allow repetitions and quantify over distinct
+    point pairs. The general lower bound permits smaller blocks. The two exact minima
+    require exact block sizes. The interpretation as an all-to-all data limit follows
+    the mathematical model in the paper.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: [propext, Classical.choice, Quot.sound]
+automation:
+  methods:
+    - method: agent
+      models: ["OpenAI GPT-6.2 Astra", "OpenAI GPT-6.2 Sol"]
+      framework: OpenAI Codex
+      tool_setup: "Lean 4, Mathlib, exact finite certificates and independently implemented integer checkers."
+  spend_usd: "Commercial subscription; per-result cost untracked."
+  notes: >-
+    Troy Valiyaparampil initiated and directed the research and requested the formal
+    checks. The models selected and framed the question, proposed and proved the
+    mathematical claims, implemented the experiments and proofs, and prepared the text.
+fidelity:
+  divergences: >-
+    No known divergence in the seven stated contracts. The literature search,
+    historical priority and practical interpretation are outside the formal statements.
+review:
+  status: self-assessed
+  reviewers: []
+  notes: >-
+    Related AI sessions scrutinized the informal proof and its Lean contracts. The
+    original release includes a clean proof build, a theorem dependency audit and
+    separate certificate replays. Independent human peer review is outstanding.
+alignment:
+  namespace: MillsFourteen
+  statements:
+    - {source: "Mills extremum", lean: MillsFourteen.mills_eq_seven_twentyThree, module: Solution, status: proved}
+    - {source: "Fractional matching maximum", lean: MillsFourteen.fractional_matching_maximum, module: Solution, status: proved}
+    - {source: "Barker attainment", lean: MillsFourteen.witness_mem_millsValues, module: Solution, status: proved}
+    - {source: "Pair-covering lower bound", lean: MillsFourteen.covering_card_lower_bound, module: Solution, status: proved}
+    - {source: "Exact 70n-point family", lean: MillsFourteen.covering70_exact_scaled, module: Solution, status: proved}
+    - {source: "Exact 69n-point family", lean: MillsFourteen.covering69_exact_scaled, module: Solution, status: proved}
+    - {source: "Fourteen-block impossibility on seventy points", lean: MillsFourteen.noFourteenBlockCover, module: Solution, status: proved}
+acknowledgements: "Füredi's conjecture, Barker's and Canli's constructions, and the Lean and Mathlib communities."

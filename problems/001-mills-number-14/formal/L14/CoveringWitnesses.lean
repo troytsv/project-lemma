@@ -1,4 +1,8 @@
-import L14.Covering
+module
+
+public import L14.Covering
+
+@[expose] public section
 
 open Finset
 

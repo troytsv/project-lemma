@@ -1,5 +1,9 @@
-import Lemma
-import Lean.Util.CollectAxioms
+module
+
+public import Lemma
+public import Lean.Util.CollectAxioms
+
+@[expose] public section
 
 -- State the user-facing contract independently of any auxiliary definition.
 example : ∀ blocks : Fin 14 → Finset (Fin 70),

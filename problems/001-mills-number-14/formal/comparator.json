@@ -1,0 +1,18 @@
+{
+  "challenge_module": "Challenge",
+  "solution_module": "Solution",
+  "theorem_names": [
+    "MillsFourteen.mills_eq_seven_twentyThree",
+    "MillsFourteen.fractional_matching_maximum",
+    "MillsFourteen.witness_mem_millsValues",
+    "MillsFourteen.covering_card_lower_bound",
+    "MillsFourteen.covering70_exact_scaled",
+    "MillsFourteen.covering69_exact_scaled",
+    "MillsFourteen.noFourteenBlockCover"
+  ],
+  "permitted_axioms": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ]
+}

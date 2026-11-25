@@ -1,4 +1,8 @@
-import L14.Reduction
+module
+
+public import L14.Reduction
+
+@[expose] public section
 
 open Finset
 
@@ -30,18 +34,18 @@ theorem edgeLoadLower (s : Finset Edge) (w : Edge → ℝ) (W : ℝ)
     W + ((p.card : ℝ) - 1) * w p ≤ ∑ i ∈ p, load s w i := by
   calc
     _ = ∑ q ∈ s, (w q + if q = p then ((p.card : ℝ) - 1) * w q else 0) := by
-      rw [sum_add_distrib, sum_ite_eq', if_pos hp, hm]
+      rw [sum_add_distrib, sum_ite_eq', ite_eq_left hp, hm]
     _ ≤ ∑ q ∈ s, ((p ∩ q).card : ℝ) * w q := by
       apply sum_le_sum
       intro q hq
       by_cases heq : q = p
       · subst q
-        simp only [inter_self, if_true]
+        simp only [inter_self, ite_true]
         ring_nf
         exact le_rfl
       · have hcard : (1 : ℝ) ≤ ((p ∩ q).card : ℝ) := by
           exact_mod_cast Finset.card_pos.mpr (hi p hp q hq)
-        simpa only [if_neg heq, add_zero, one_mul] using
+        simpa only [ite_eq_right heq, add_zero, one_mul] using
           mul_le_mul_of_nonneg_right hcard (hw q hq)
     _ = ∑ i ∈ p, load s w i := (sumLoadsOn s w p).symm
 
@@ -145,10 +149,10 @@ theorem capTenStructure (s : Finset Edge) (w : Edge → ℝ) (W : ℝ)
       by_cases hr : 4 < p.card
       · have hfive : 5 ≤ p.card := by omega
         have hfiveReal : (5 : ℝ) ≤ (p.card : ℝ) := by exact_mod_cast hfive
-        simpa only [if_pos hr, one_mul] using
+        simpa only [ite_eq_left hr, one_mul] using
           mul_le_mul_of_nonneg_right (show (1 : ℝ) ≤ (p.card : ℝ) - 4 by linarith) (hw p hp)
       · have hfourReal : (4 : ℝ) ≤ (p.card : ℝ) := by exact_mod_cast rankMin p hp
-        simpa only [if_neg hr] using mul_nonneg (sub_nonneg.mpr hfourReal) (hw p hp)
+        simpa only [ite_eq_right hr] using mul_nonneg (sub_nonneg.mpr hfourReal) (hw p hp)
     linarith [hbound.trans excess]
   let four := s.filter (fun p => p.card = 4)
   have partition :
@@ -211,19 +215,19 @@ theorem rankFourStar (s : Finset Edge) (w : Edge → ℝ) (W C : ℝ)
     have hcard : (p.erase x).card = 3 := by rw [card_erase_of_mem hpx, hx p hps hpx]
     have hlower : W - load s w x + 3 * w p ≤ ∑ i ∈ p.erase x, load s w i := by
       have hdiag : (∑ q ∈ s, if q = p then 3 * w q else 0) = 3 * w p := by
-        rw [sum_ite_eq', if_pos hps]
+        rw [sum_ite_eq', ite_eq_left hps]
       rw [← hoffMass, ← hdiag, ← sum_add_distrib, sumLoadsOn]
       apply sum_le_sum
       intro q hq
       by_cases hqp : q = p
       · subst q
-        rw [if_pos hpx, if_pos rfl, zero_add, inter_eq_left.mpr (erase_subset _ _), hcard]
+        rw [ite_eq_left hpx, ite_eq_left rfl, zero_add, inter_eq_left.mpr (erase_subset _ _), hcard]
         norm_num
-      · rw [if_neg hqp, add_zero]
+      · rw [ite_eq_right hqp, add_zero]
         by_cases hqx : x ∈ q
-        · rw [if_pos hqx]
+        · rw [ite_eq_left hqx]
           exact mul_nonneg (Nat.cast_nonneg _) (hw q hq)
-        · rw [if_neg hqx]
+        · rw [ite_eq_right hqx]
           obtain ⟨i, hiq⟩ := hi p hps q hq
           obtain ⟨hip, hiq⟩ := mem_inter.mp hiq
           have hiq' : i ∈ p.erase x ∩ q :=

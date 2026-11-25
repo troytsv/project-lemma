@@ -1,4 +1,8 @@
-import L14.ThresholdCore
+module
+
+public import L14.ThresholdCore
+
+@[expose] public section
 
 open Finset
 
@@ -123,10 +127,10 @@ theorem high_le_excess : z.H ≤ z.E := by
   by_cases hr : 4 < p.card
   · have hfive : 5 ≤ p.card := by omega
     have hfiveReal : (5 : ℝ) ≤ (p.card : ℝ) := by exact_mod_cast hfive
-    simpa only [if_pos hr, one_mul] using
+    simpa only [ite_eq_left hr, one_mul] using
       mul_le_mul_of_nonneg_right (show (1 : ℝ) ≤ (p.card : ℝ) - 4 by linarith) (z.hw p hp).le
   · have hfourReal : (4 : ℝ) ≤ (p.card : ℝ) := by exact_mod_cast z.rankMin p hp
-    simpa only [if_neg hr] using mul_nonneg (sub_nonneg.mpr hfourReal) (z.hw p hp).le
+    simpa only [ite_eq_right hr] using mul_nonneg (sub_nonneg.mpr hfourReal) (z.hw p hp).le
 
 theorem excess_lt : z.E < 18 := by
   have hs := z.slack_sum_nonneg
@@ -162,7 +166,7 @@ theorem fourAtVertex (i : Fin 14) : 0 < z.degree i := by
     unfold load H
     rw [← z.sum_parts]
     have hvanish : (∑ p ∈ z.F, if i ∈ p then z.w p else 0) = 0 := by
-      exact sum_eq_zero fun p hp => if_neg (hno p hp)
+      exact sum_eq_zero fun p hp => ite_eq_right (hno p hp)
     rw [hvanish, zero_add]
     apply sum_le_sum
     intro p hp

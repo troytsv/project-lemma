@@ -1,7 +1,11 @@
-import Mathlib.Data.Real.Basic
-import Mathlib.LinearAlgebra.Dimension.Constructions
-import Mathlib.LinearAlgebra.FiniteDimensional.Basic
-import Mathlib.Tactic
+module
+
+public import Mathlib.Basic.Real.Basic
+public import Mathlib.LinearAlgebra.Dimension.Constructions
+public import Mathlib.LinearAlgebra.FiniteDimensional.Basic
+public import Mathlib.Tactic
+
+@[expose] public section
 
 open Finset
 
@@ -30,7 +34,7 @@ private theorem direction (s : Finset Edge) (hlarge : 14 < s.card) :
     exact (not_le_of_gt hlarge) (by simpa [Module.finrank_pi] using
       independent.fintype_card_le_finrank)
   rw [linearIndepOn_finset_iff] at dependent
-  push_neg at dependent
+  push Not at dependent
   obtain ⟨d, hzero, p, hp, hdp⟩ := dependent
   have hload (i : Fin 14) : load s d i = 0 := by
     have hcoord := congrFun hzero i
@@ -57,7 +61,7 @@ theorem reduceSupport (s : Finset Edge) (w : Edge → ℝ)
   obtain ⟨d, hd, hdload, hdsum⟩ := direction s (lt_of_not_ge hs)
   let decreasing := s.filter (fun p => 0 < d p)
   have hdecreasing : decreasing.Nonempty := by
-    by_contra! h
+    by_contra h
     obtain ⟨p, hp, hdp⟩ := hd
     obtain ⟨i, hi⟩ := hn p hp
     have nonpos (q : Edge) (hq : q ∈ s) : d q ≤ 0 := by

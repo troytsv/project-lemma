@@ -1,6 +1,10 @@
-import Lemma.Sparse
-import Lemma.Ranks
-import Lemma.Incidence
+module
+
+public import Lemma.Sparse
+public import Lemma.Ranks
+public import Lemma.Incidence
+
+@[expose] public section
 
 open Finset
 namespace C7021

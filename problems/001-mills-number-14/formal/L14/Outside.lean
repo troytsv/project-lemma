@@ -1,4 +1,8 @@
-import L14.SharpData
+module
+
+public import L14.SharpData
+
+@[expose] public section
 
 open Finset
 

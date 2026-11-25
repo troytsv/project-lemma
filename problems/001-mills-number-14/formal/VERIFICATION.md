@@ -4,17 +4,19 @@ The formal development proves the weighted extremum on fourteen vertices, verifi
 
 ## Reproduce the checks
 
-Use Lean and Lake 4.24.0 as specified by [lean-toolchain](lean-toolchain). [lake-manifest.json](lake-manifest.json) pins Mathlib v4.24.0 at `f897ebcf72cd16f89ab4577d0c826cd14afaafc7` and fixes the eight transitive dependency revisions. In a fresh checkout, run these commands from `formal`.
+For the Palomar port, use Lean and Lake 4.36.0 as specified by [lean-toolchain](lean-toolchain). [lake-manifest.json](lake-manifest.json) pins Mathlib v4.36.0 at `fc4f59e577feb1a4956671bc04ac18aaaf8cd842` and fixes the eight transitive dependency revisions. In a fresh checkout, run these commands from `formal`.
 
 ```sh
 lean --version
-lake exe cache get Mathlib.Tactic Mathlib.Data.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
+lake exe cache get Mathlib.Tactic Mathlib.Algebra.Order.Archimedean.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
 lake --wfail build
 lake env lean -DwarningAsError=true Audit.lean
 lake env lean -DwarningAsError=true AuditL14.lean
 ```
 
 The cache command retrieves dependency artifacts. The build elaborates the project's proof sources. The two audits restate the contracts with their predicates expanded and reject an axiom outside the allowlist. GitHub Actions runs the same build and audits on Ubuntu. The [older replay](REPLAY.txt) records the original proof of the 70-point lower bound.
+
+The [standalone Challenge](Challenge.lean) uses only upstream mathematical definitions. Its seven deliberate proof holes are the inputs to Comparator. Each corresponding declaration in [Solution](Solution.lean) applies a released theorem at the expanded type. The [Comparator configuration](comparator.json) names all seven. The [formalization metadata](formalization.yaml) records the proof and construction provenance. The original [version 1.0.0 verification report](https://github.com/troytsv/project-lemma/blob/mills-14-v1.0.0/problems/001-mills-number-14/formal/VERIFICATION.md) preserves the Lean 4.24.0 replay instructions.
 
 ## Checked statements
 
@@ -38,7 +40,7 @@ The weighted contract uses `Finset (Finset (Fin 14))`. The intersection conditio
 
 [`CoveringWitnesses.lean`](L14/CoveringWitnesses.lean) expands the weighted Barker witness and checks the Canli covering by its incidence columns. The Canli columns transcribe [the attributed source certificate](../certificates/README.md). The independent witness and relabeling scripts validate the original Barker construction by integer arithmetic.
 
-## Replay results
+## Version 1.0.0 replay results
 
 The 2026-11-25 Windows replay used Lean 4.24.0, commit `797c613eb9b6d4ec95db23e3e00af9ac6657f24b`. All nine local dependency checkouts matched the pinned commits and had clean tracked files. The import path contained only those dependencies' precompiled libraries and a newly created project output directory. Lean compiled all 21 local source files with `-DwarningAsError=true`, including both audits. The replay reused third-party library objects. It rebuilt all local proof objects from source.
 

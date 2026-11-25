@@ -1,5 +1,9 @@
-import L14
-import Lean.Util.CollectAxioms
+module
+
+public import L14
+public import Lean.Util.CollectAxioms
+
+@[expose] public section
 
 open Finset
 

@@ -1,5 +1,9 @@
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Tactic
+
+@[expose] public section
 
 open scoped BigOperators
 
@@ -18,7 +22,7 @@ theorem rankCases (s : Finset (Fin 70)) (w : Fin 70 → ℚ) (r : Fin 70 → ℕ
   let excess (p : Fin 70) : ℚ := ((r p : ℚ) - 4) * w p
   change (∑ p ∈ s, excess p) ≤ 6 at he
   have cardSplit : rankFour.card + higher.card = s.card := by
-    apply Finset.filter_card_add_filter_neg_card_eq_card
+    apply Finset.card_filter_add_card_filter_not
   have weightSplit : (∑ p ∈ rankFour, w p) + (∑ p ∈ higher, w p) = 30 := by
     rw [← hm]
     apply Finset.sum_filter_add_sum_filter_not

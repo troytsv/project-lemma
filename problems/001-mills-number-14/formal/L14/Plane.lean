@@ -1,4 +1,8 @@
-import L14.Sparse
+module
+
+public import L14.Sparse
+
+@[expose] public section
 
 open Finset
 

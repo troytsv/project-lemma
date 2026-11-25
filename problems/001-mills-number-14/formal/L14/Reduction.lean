@@ -1,4 +1,8 @@
-import L14.Sparse
+module
+
+public import L14.Sparse
+
+@[expose] public section
 
 open Finset
 
@@ -28,16 +32,16 @@ theorem largeMassStructure (s : Finset Edge) (w : Edge → ℝ) (W : ℝ)
       W + ((p.card : ℝ) - 1) * w p ≤ (p.card : ℝ) := by
     calc
       _ = ∑ q ∈ s, (w q + if q = p then ((p.card : ℝ) - 1) * w q else 0) := by
-        rw [sum_add_distrib, sum_ite_eq', if_pos hp, hm]
+        rw [sum_add_distrib, sum_ite_eq', ite_eq_left hp, hm]
       _ ≤ ∑ q ∈ s, ((p ∩ q).card : ℝ) * w q := by
         apply sum_le_sum
         intro q hq
         by_cases heq : q = p
         · subst q
-          simp only [inter_self, if_true]
+          simp only [inter_self, ite_true]
           ring_nf
           exact le_rfl
-        · simpa only [if_neg heq, add_zero, one_mul] using
+        · simpa only [ite_eq_right heq, add_zero, one_mul] using
             (mul_le_mul_of_nonneg_right (pairCard p hp q hq) (hw q hq).le)
       _ = ∑ i ∈ p, load s w i := (sumLoads p).symm
       _ ≤ _ := capacity p
@@ -69,11 +73,11 @@ theorem largeMassStructure (s : Finset Edge) (w : Edge → ℝ) (W : ℝ)
       by_cases hr : 4 < p.card
       · have hfive : 5 ≤ p.card := by omega
         have hfiveReal : (5 : ℝ) ≤ (p.card : ℝ) := by exact_mod_cast hfive
-        simpa only [if_pos hr, one_mul] using
+        simpa only [ite_eq_left hr, one_mul] using
           mul_le_mul_of_nonneg_right (show (1 : ℝ) ≤ (p.card : ℝ) - 4 by linarith)
             (hw p hp).le
       · have hfourReal : (4 : ℝ) ≤ (p.card : ℝ) := by exact_mod_cast rankMin p hp
-        simpa only [if_neg hr] using mul_nonneg (sub_nonneg.mpr hfourReal) (hw p hp).le
+        simpa only [ite_eq_right hr] using mul_nonneg (sub_nonneg.mpr hfourReal) (hw p hp).le
     linarith [hbound.trans excess]
   let four := s.filter (fun p => p.card = 4)
   have partition :

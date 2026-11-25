@@ -1,0 +1,21 @@
+name: Problem 001 Palomar preflight
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'problems/001-mills-number-14/formal/**'
+      - '.github/workflows/palomar-001.yml'
+permissions:
+  contents: read
+jobs:
+  palomar:
+    uses: PalomarRegistry/PalomarSubmission/.github/workflows/submission.yml@14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+    with:
+      repository: ${{ github.repository }}
+      commit: ${{ github.sha }}
+      pipeline_commit: 14aa8d6b3c2f14a8540605e37144560b9a00e7e7
+      request_id: mills14proof
+      mode: full
+      execution_profile: palomar-standard-v1
+      options: '{"project_path":"problems/001-mills-number-14/formal","comparator_config_path":"problems/001-mills-number-14/formal/comparator.json","authorization_relationship":"I have approval from a responsible author or maintainer"}'

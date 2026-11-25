@@ -1,4 +1,8 @@
-import L14.Sharp
+module
+
+public import L14.Sharp
+
+@[expose] public section
 
 open Finset
 

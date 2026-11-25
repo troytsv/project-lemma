@@ -1,6 +1,10 @@
-import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
-import Mathlib.Algebra.Order.BigOperators.Group.Finset
-import Mathlib.Tactic
+module
+
+public import Mathlib.Algebra.BigOperators.Group.Finset.Piecewise
+public import Mathlib.Algebra.Order.BigOperators.Group.Finset
+public import Mathlib.Tactic
+
+@[expose] public section
 
 namespace C7021
 
@@ -33,16 +37,16 @@ theorem incidence
       30 + (((P p).card : ℚ) - 1) * w p ≤ ((P p).card : ℚ) * 9 := by
     calc
       _ = ∑ q ∈ s, (w q + if q = p then (((P p).card : ℚ) - 1) * w q else 0) := by
-        rw [Finset.sum_add_distrib, Finset.sum_ite_eq', if_pos hp, hm]
+        rw [Finset.sum_add_distrib, Finset.sum_ite_eq', ite_eq_left hp, hm]
       _ ≤ ∑ q ∈ s, ((P p ∩ P q).card : ℚ) * w q := by
         apply Finset.sum_le_sum
         intro q hq
         by_cases heq : q = p
         · subst q
-          simp only [Finset.inter_self, if_true]
+          simp only [Finset.inter_self, ite_true]
           ring_nf
           exact le_rfl
-        · simpa only [if_neg heq, add_zero, one_mul] using
+        · simpa only [ite_eq_right heq, add_zero, one_mul] using
             (mul_le_mul_of_nonneg_right (pair_card p q) (hw q hq).le)
       _ = ∑ i ∈ P p, load i := (sum_load (P p)).symm
       _ ≤ _ := upper (P p)

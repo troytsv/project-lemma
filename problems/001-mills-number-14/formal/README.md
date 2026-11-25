@@ -14,7 +14,7 @@ theorem C7021.noFourteenBlockCover (B : Fin 14 → Finset (Fin 70))
 
 ## Reproduce
 
-With Lean 4.24.0 and its matching Lake available on the path, open a shell in the directory containing `lakefile.toml`. The project pins its dependencies in `lake-manifest.json`. On a fresh checkout, the first command retrieves the precompiled library dependencies, and the second compiles the local proof modules. The final command checks the theorem contract and axiom allowlist.
+With Lean 4.36.0 and its matching Lake available on the path, open a shell in the directory containing `lakefile.toml`. The project pins its dependencies in `lake-manifest.json`. On a fresh checkout, the first command retrieves the precompiled library dependencies, and the second compiles the local proof modules. The final command checks the theorem contract and axiom allowlist.
 
 ```text
 lake exe cache get Mathlib.Tactic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
@@ -42,4 +42,4 @@ The audit fails on any additional axiom, including a proof placeholder. These th
 
 The original proof uses finite elimination over rational weights for its support-reduction step. The separate fourteen-vertex development uses real weights, checks the published 15-block certificate, and derives the exact covering number for 70 points. The project's Python verifiers also check the certificate.
 
-The pinned mathlib commit is `f897ebcf72cd16f89ab4577d0c826cd14afaafc7`. The [official Lean release](https://github.com/leanprover/lean4/releases/expanded_assets/v4.24.0) lists SHA-256 checksums for each platform archive.
+The pinned mathlib commit is `fc4f59e577feb1a4956671bc04ac18aaaf8cd842`. The [official Lean release](https://github.com/leanprover/lean4/releases/expanded_assets/v4.36.0) lists SHA-256 checksums for each platform archive.

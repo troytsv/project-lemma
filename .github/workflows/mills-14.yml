@@ -81,20 +81,20 @@ jobs:
       - name: Cache the verified Lean distribution archive
         uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
-          path: ~/.cache/project-lemma/lean-4.24.0-linux.tar.zst
-          key: lean-dist-ubuntu-x64-4.24.0-b14f5e51
+          path: ~/.cache/project-lemma/lean-4.36.0-linux.tar.zst
+          key: lean-dist-ubuntu-x64-4.36.0-2b7ab1ed
       - name: Install the pinned Lean release
         run: |
-          archive="$HOME/.cache/project-lemma/lean-4.24.0-linux.tar.zst"
+          archive="$HOME/.cache/project-lemma/lean-4.36.0-linux.tar.zst"
           mkdir -p "$(dirname "$archive")"
           if [ ! -s "$archive" ]; then
-            curl --fail --location --retry 3 --output "$archive" https://github.com/leanprover/lean4/releases/download/v4.24.0/lean-4.24.0-linux.tar.zst
+            curl --fail --location --retry 3 --output "$archive" https://github.com/leanprover/lean4/releases/download/v4.36.0/lean-4.36.0-linux.tar.zst
           fi
-          printf '%s  %s\n' b14f5e5159219dd1a1956c3b806813319f5e94ccd5bdfd56f54520609a5bb5ec "$archive" | sha256sum --check
+          printf '%s  %s\n' 2b7ab1ed8b92d2e6abfaf41344823b510064dbc9c0260cac73eb496ab2dea6eb "$archive" | sha256sum --check
           tar --extract --zstd --file "$archive" --directory "$RUNNER_TEMP"
-          echo "$RUNNER_TEMP/lean-4.24.0-linux/bin" >> "$GITHUB_PATH"
+          echo "$RUNNER_TEMP/lean-4.36.0-linux/bin" >> "$GITHUB_PATH"
       - name: Retrieve pinned upstream libraries
-        run: lake exe cache get Mathlib.Tactic Mathlib.Data.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
+        run: lake exe cache get Mathlib.Tactic Mathlib.Algebra.Order.Archimedean.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
       - name: Verify dependency revisions and build all project sources
         run: |
           python3 - <<'PY'

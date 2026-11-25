@@ -1,4 +1,8 @@
-import L14.Outside
+module
+
+public import L14.Outside
+
+@[expose] public section
 
 open Finset
 

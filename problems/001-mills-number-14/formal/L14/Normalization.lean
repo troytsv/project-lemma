@@ -1,4 +1,8 @@
-import L14.Witness
+module
+
+public import L14.Witness
+
+@[expose] public section
 
 open Finset
 

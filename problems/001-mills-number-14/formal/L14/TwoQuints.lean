@@ -1,4 +1,8 @@
-import L14.Outside
+module
+
+public import L14.Outside
+
+@[expose] public section
 
 open Finset
 
@@ -273,7 +277,7 @@ theorem twoQuints (z : SharpData) (hf : z.F.card = 12) {a b : Edge} (hne : a ≠
       have hl := z.deficitAt x
       have hxload : dx = load z.F z.deficit x := by simp [dx, fx, load, sum_filter]
       rw [hxload]
-      simp only [hxab.1, hxab.2, if_true] at hh
+      simp only [hxab.1, hxab.2, ite_true] at hh
       have heq : z.degree x = fx.card := rfl
       rw [heq] at hl
       linarith [show z.slack x = 21 - load z.s z.w x from rfl]
@@ -296,7 +300,7 @@ theorem twoQuints (z : SharpData) (hf : z.F.card = 12) {a b : Edge} (hne : a ≠
             simp [hpx]
             linarith
           · have hc : ((p ∩ u).card : ℝ) ≤ 2 := by exact_mod_cast (hcounts p hp).2.1 (hmiss p hpx)
-            simpa only [if_neg hpx, add_zero] using mul_le_mul_of_nonneg_right hc (z.deficitPos p hp).le
+            simpa only [ite_eq_right hpx, add_zero] using mul_le_mul_of_nonneg_right hc (z.deficitPos p hp).le
         _ = _ := by
           rw [sum_add_distrib, ← mul_sum, z.sum_deficit, ← sum_filter]
     have hfxpos : 0 < fx.card := z.fourAtVertex x

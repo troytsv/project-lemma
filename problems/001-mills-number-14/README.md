@@ -31,11 +31,11 @@ python results/verify_covering_certificates.py
 
 The first two commands check all 2,346 pairs of Barker’s covering, its relabeling and the order-three plane underlying the presentation. The next two independently check all 2,415 pairs in the 70-point certificate. The tests exercise malformed examples as well as valid ones. Two comparison certificates can be supplied separately under the instructions in [certificate provenance](certificates/README.md). The rank check replays the numerical cases of the original proof. The final command verifies all pairs in ten further fifteen-block constructions.
 
-With Lean 4.24.0 and Lake available, a new checkout can reproduce the formal results as follows. The manifest pins Mathlib and its dependencies.
+With Lean 4.36.0 and Lake available, a new checkout can reproduce the formal results as follows. The manifest pins Mathlib and its dependencies.
 
 ```sh
 cd formal
-lake exe cache get Mathlib.Tactic Mathlib.Data.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
+lake exe cache get Mathlib.Tactic Mathlib.Algebra.Order.Archimedean.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
 lake --wfail build
 lake env lean -DwarningAsError=true Audit.lean
 lake env lean -DwarningAsError=true AuditL14.lean

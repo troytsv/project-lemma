@@ -1,7 +1,11 @@
-import L14.Normalization
-import L14.Eleven
-import L14.HighRanks
-import L14.TwoQuints
+module
+
+public import L14.Normalization
+public import L14.Eleven
+public import L14.HighRanks
+public import L14.TwoQuints
+
+@[expose] public section
 
 open Finset
 
