@@ -1,6 +1,6 @@
 name = "covering"
 version = "1.0.0"
-defaultTargets = ["Lemma"]
+defaultTargets = ["Lemma", "L14"]
 
 [[require]]
 name = "mathlib"
@@ -9,3 +9,6 @@ rev = "v4.24.0"
 
 [[lean_lib]]
 name = "Lemma"
+
+[[lean_lib]]
+name = "L14"

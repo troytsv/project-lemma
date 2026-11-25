@@ -1,0 +1,22 @@
+Exploratory randomized support search. W is total weight at vertex capacity 4.
+The winning support has exact optimum W = 92/7 at that scale. Multiplying
+all weights by 21/4 gives total 69 and vertex loads 21. The exact verifier checks the recovered
+upper witness independently using integer masks, block sizes and all point pairs.
+
+PowerShell 7:
+$type = Add-Type -Path 'l14/classify/Search.cs' -PassThru
+$type::Run(503,400,2000)
+$type::Run(2407,400,2000)
+$type::Run(1414,400,2000)
+
+improved W = 13.142857142857141, masks = 7680,2209,4152,4544,804,2132,1122,1164,9489,658,2314,8777,12295,10400
+seed = 503, evaluated = 800000, stalled = 0, best W = 13.142857142857141
+best W without the original plane = 13.142857142857141, masks = 7680,2209,4152,4544,804,2132,1122,1164,9489,658,2314,8777,12295,10400
+improved W = 13.142857142857142, masks = 585,2209,4152,1122,4544,1164,1297,804,7680,10506,8850,12295,2132,9312
+seed = 2407, evaluated = 800000, stalled = 0, best W = 13.142857142857142
+best W without the original plane = 13.142857142857142, masks = 585,2209,4152,1122,4544,1164,1297,804,7680,10506,8850,12295,2132,9312
+seed = 1414, evaluated = 800000, stalled = 0, best W = 13
+best W without the original plane = 13.000000000000002, masks = 7680,4103,585,2209,658,1122,4544,804,1164,2132,1297,2314,2365,12344
+
+The search uses floating point, ranks 4–7, and local mutations of projective
+plane seeds. The 2.4 million LP evaluations provide exploratory evidence.

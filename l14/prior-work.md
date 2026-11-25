@@ -1,0 +1,25 @@
+# Prior work and upper-bound provenance
+
+## The lower bound
+
+William H. Mills determined the first Mills numbers through $13$. Guiduli and Király define the first Mills number $M_1(n)$ by minimizing the maximum vertex load of an intersecting hypergraph with total weight 1. They give the identity $M_1(n)=1/\nu^*(n)$, where $\nu^*(n)$ is the largest fractional matching number of an intersecting hypergraph on $n$ vertices. The ATAC data limit $L(n)$ of Hall, Horsley, and Stinson is the same parameter by their Lemma 3.1. [Mills, 1979](https://combinatorialpress.com/ars/vol8/) · [Füredi, 1988, p. 179](https://www.renyi.hu/~furedi/PUBS3/furedi_070_matchings_and_covers_1988.pdf#page=65) · [Guiduli and Király, 1998, §§1–2](https://people.cs.uchicago.edu/~laci/students/guiduli.dir/barry-kiraly.pdf) · [Hall, Horsley, and Stinson, 2024, Lemma 3.1](https://link.springer.com/article/10.1007/s10623-024-01418-6#Sec3)
+
+Zoltán Füredi conjectured that $\mu(q^2+q+2)\le q+2/(2q+1)$, with equality if a projective plane of order $q$ exists. He stated it in Conjecture (6.3) in 1990 and again in Conjecture 4.9 in 1994, using $\mu$ in the latter paper. His parameter is the same maximum fractional matching number, since isolated vertices can be added to reach $n$. For $q=3$, the conjecture states $\mu(14)=23/7$, or $L(14)=7/23$. Both pages state the conjecture without giving a construction for this equality. [Füredi, *Journal of Combinatorial Theory, Series A* 54 (1990), 248–271, p. 257](https://users.renyi.hu/~furedi/PUBS3/furedi_084_covering_pairs_JCTA_1990.pdf#page=10) · [Füredi, *Discrete Mathematics* 127 (1994), 187–207, p. 193](https://users.renyi.hu/~furedi/PUBS3/furedi_122_intersecting_designs.pdf#page=7)
+
+Hall, Horsley, and Stinson's Theorem 1.5 gives $L(14)>(123+\sqrt{1297})/532$, about $0.29890$. Guiduli and Király's exact calculations concern the second Mills number, which measures the weight covered by two vertices. [Hall, Horsley, and Stinson, Theorem 1.5](https://doi.org/10.1007/s10623-024-01418-6) · [Guiduli and Király, §§1–4](https://people.cs.uchicago.edu/~laci/students/guiduli.dir/barry-kiraly.pdf)
+
+The literature search on 25 November 2026 located no earlier proof of $L(14)\ge 7/23$. It checked public sources on fractional matching and the first Mills number, recent pair-covering records, and indexed works citing Füredi's 1994 paper or Hall, Horsley, and Stinson's 2024 paper. The full texts of Todorov's 1985 and 1989 covering papers were unavailable in this search. [Todorov, 1985](https://doi.org/10.1016/0097-3165(85)90084-6) · [Todorov, 1989](https://doi.org/10.1007/BF02124682)
+
+## Barker's archived covering
+
+The La Jolla Coverings Repository records a fourteen-block $(69,21,2)$-covering by Colin Barker, dated 28 December 2008, with simulated annealing as the construction method. Uniform weights on the 69 points give block load $21/69=7/23$. The entry appears under `C(69,21,2)` in `coverdata.json` and `covers.json` in Daniel M. Gordon's v1.2.1 archive of 10 November 2026. [La Jolla Coverings Repository v1.2.1, CC BY 4.0](https://doi.org/10.5281/zenodo.24119701)
+
+The offline checker [verify_barker.py](classify/verify_barker.py) verifies the archived 14 blocks against all 2,346 point pairs. It counts identical point-incidence patterns after mapping archive blocks 1 through 14 to witness bits `5, 1, 6, 10, 7, 11, 0, 9, 8, 2, 4, 3, 12, 13`. The resulting 14 patterns and their multiplicities match [the witness checked in Lean](../formal/L14/Witness.lean). The archived entry occupies bytes 3,243,870 through 3,244,787 inclusive of the versioned `covers.json` file. [Archived blocks](https://zenodo.org/api/records/24119701/files/covers.json/content)
+
+## Projective-plane construction
+
+The witness is a projective plane of order three with one point $p$ split into two points $x$ and $y$, corresponding to witness bits 0 and 13. The nine lines avoiding $p$ remain unchanged. One line through $p$ is replaced by two edges, with the same three old points and one new point each. In each of the other three lines through $p$, both new points replace $p$. A retained line meets each modified edge at its original intersection away from $p$. The two split edges meet in their three old points, and each other modified edge contains both $x$ and $y$.
+
+The integer weights are 5 on the retained lines, 3 on the two split edges, and 6 on the three remaining modified edges. Each old point has load $3\cdot5+6=21$ and each new point has load $3+3\cdot6=21$. The checker verifies these edge types and merges bits 0 and 13 to recover all thirteen lines of the projective plane of order three.
+
+The same splitting operation on a projective plane of order $q$ gives a candidate for the equality value in Füredi's conjecture. Assign weights $(2q-1)/(q(2q+1))$, $1/(2q+1)$, and $2/(2q+1)$ to the retained, split, and remaining modified edges, respectively. Each point then has load 1 and the total mass is $q+2/(2q+1)$, giving $\mu(q^2+q+2)\ge q+2/(2q+1)$ when the plane exists.

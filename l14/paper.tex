@@ -1,0 +1,288 @@
+\documentclass[11pt]{article}
+\usepackage[hmargin=.94in,vmargin=.78in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={The first Mills number on fourteen vertices},
+  pdfauthor={Troy Valiyaparampil and GPT-6.2 Astra}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newenvironment{proof}{\par\noindent\textit{Proof.}\ }{\hfill\(\square\)\par}
+\newcommand{\F}{\mathcal F}
+\newcommand{\G}{\mathcal G}
+\title{The first Mills number on fourteen vertices}
+\author{Troy Valiyaparampil and GPT-6.2 Astra}
+\date{25 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+In a distribution of data across fourteen machines for which each pair of
+items shares a machine, the largest machine load is at least \(7/23\) of
+the data. Colin Barker's 2008 covering of 69 points by fourteen blocks of
+size 21 attains this fraction. This establishes the \(q=3\) case of
+a conjecture posed by F\"uredi in 1990. We prove the matching lower bound for
+arbitrary real weights. A count of incidences on four-element patterns
+reduces a putative counterexample to twelve such patterns and two
+five-element patterns. The intersection of the latter two forces a
+packing of ten pairs that can accommodate at most eight.
+\end{abstract}
+
+\section{The parameter and the construction}
+Let an item have as its \emph{pattern} the set of machines holding it.
+Pairwise comparison is possible exactly when every two patterns intersect.
+Merge items with the same pattern and give that pattern their combined
+weight. On the vertex set \(V=\{0,\ldots,13\}\), let \(w_A\ge0\)
+be the weight on each member of an intersecting family of nonempty
+subsets. The load at \(x\) is \(\ell_x=\sum_{A\ni x}w_A\).
+The infimum of \(\max_x\ell_x\) over all such families with total weight
+one is the all-to-all comparison data limit \(L(14)\) of Hall, Horsley and
+Stinson \cite{hhs}. This is also the first Mills number \(M_1(14)\) in the
+notation of Guiduli and Kir\'aly \cite{gk}. With vertex capacities one,
+the largest possible total weight is its reciprocal.
+
+\begin{theorem}\label{thm:main}
+\(L(14)=M_1(14)=7/23\). The maximum fractional matching number of
+an intersecting hypergraph on fourteen vertices is \(23/7\).
+\end{theorem}
+
+F\"uredi \cite[Conjecture 4.9]{furedi94} wrote \(\mu(n)\) for the
+maximum fractional matching number of an intersecting hypergraph on at
+most \(n\) vertices. Isolated vertices allow us to use exactly \(n\).
+In 1990 he conjectured \(\mu(q^2+q+2)\le q+2/(2q+1)\), with equality
+when a projective plane of order \(q\) exists \cite[Conjecture (6.3)]{furedi90}.
+Theorem~\ref{thm:main} establishes this prediction for \(q=3\).
+
+Barker's covering in the La Jolla archive \cite{barker} already gives
+\(L(14)\le21/69=7/23\) by Lemma~3.4 of \cite{hhs}. For an independently
+reproducible witness, the table lists the same covering up to relabeling,
+recovered by local search. In order, the fourteen blocks in Barker's
+archive map to coordinates \(5,1,6,10,7,11,0,9,8,2,4,3,12,13\) in the table.
+Each two patterns meet, every coordinate has load 21, and the
+weights sum to 69. Taking \(w_A\) distinguishable copies of pattern \(A\)
+produces fourteen distinct 21-element blocks covering all
+\(\binom{69}{2}=2346\) pairs. The same witness establishes strict
+improvement on the projective-plane value, since \(7\cdot13<4\cdot23\).
+
+\begin{center}\small
+\begin{tabular}{rl@{\qquad}rl}
+Weight & Pattern & Weight & Pattern\\ \hline
+5 & \(\{9,10,11,12\}\) & 5 & \(\{2,3,7,10\}\)\\
+3 & \(\{0,5,7,11\}\) & 6 & \(\{0,4,8,10,13\}\)\\
+5 & \(\{3,4,5,12\}\) & 5 & \(\{1,4,7,9\}\)\\
+5 & \(\{6,7,8,12\}\) & 5 & \(\{1,3,8,11\}\)\\
+5 & \(\{2,5,8,9\}\) & 6 & \(\{0,3,6,9,13\}\)\\
+5 & \(\{2,4,6,11\}\) & 6 & \(\{0,1,2,12,13\}\)\\
+5 & \(\{1,5,6,10\}\) & 3 & \(\{5,7,11,13\}\)
+\end{tabular}
+\end{center}
+
+One can read the construction directly from the projective plane of
+order three. Split a point into \(0\) and \(13\). Keep the nine lines
+avoiding it, each with weight 5. On one of the four lines through it,
+retain the other three points \(\{5,7,11\}\) and adjoin \(0\) or \(13\)
+separately to obtain two patterns of weight 3. On each remaining line,
+replace the split point by \emph{both} new points and give the resulting
+five-set weight 6. Every old point receives \(3\cdot5+6=21\), and each
+new point receives \(3+3\cdot6=21\).
+
+\section{A deficit on four-element patterns}
+To prove the other direction, suppose all loads are at most 21 and the
+total weight \(W\) exceeds 69. Any normalized distribution with maximum
+load below \(7/23\) can be scaled to these bounds. On its support maximize
+total mass subject to the fourteen capacities and nonnegativity. Each
+variable is bounded by 21, so a maximizing extreme point exists. Its
+positive incidence columns are linearly independent, since any dependence
+allows small perturbations in both directions preserving all loads and
+nonnegativity. We may therefore assume at most fourteen positive
+patterns. This is the support reduction of \cite[Lemma 3.2]{hhs}.
+
+Summing the loads on a pattern \(A\) of size \(r\) gives
+\begin{equation}\label{eq:edge}
+21r\ \ge\sum_{x\in A}\ell_x
+= W+(r-1)w_A+\sum_{B\ne A} (|A\cap B|-1)w_B .
+\end{equation}
+All summands on the right are nonnegative. Thus every pattern has size
+at least four, each size-four pattern weighs less than 5, and each
+size-five pattern weighs less than 9. Write \(\F\) for the four-element
+patterns, \(t=|\F|\), and \(\G\) for the remaining patterns. Set
+\[
+ H=\sum_{B\in\G}w_B,\qquad E=\sum_B(|B|-4)w_B,\qquad
+ S=\sum_{x\in V}(21-\ell_x)=294-4W-E .
+\]
+Then \(H\le E<18\). Since \(W-H>51\), we have \(11\le t\le14\).
+Every vertex lies in a member of \(\F\), since
+\(\ell_x\ge21-S=4W+E-273>3+E>H\).
+Define the positive deficits \(\delta_A=5-w_A\) for \(A\in\F\) and
+\[
+ D=\sum_{A\in\F}\delta_A=5t-W+H .
+\]
+Equation~\eqref{eq:edge}, applied to any \(A\in\F\), gives
+\begin{equation}\label{eq:repeats}
+ \sum_{B\ne A} (|A\cap B|-1)w_B < 3\delta_A .
+\end{equation}
+
+The same estimates also explain what is needed to beat the
+projective plane. With loads bounded by one and mass \(M>13/4\),
+the support reduction gives at most fourteen patterns. Summing loads
+on an individual pattern shows that its size is at least four and that
+each four-set weighs at most \((4-M)/3<1/4\). The weight on larger
+patterns is at most \(14-4M<1\), so the four-sets carry more than
+\(9/4\) and number at least ten.
+
+\begin{lemma}\label{lem:small}
+\(D\ge4\).
+\end{lemma}
+\begin{proof}
+Let \(d_x\) be the number of members of \(\F\) containing \(x\).
+If \(D<4\), then \(d_x\le4\) for every \(x\), because five incident
+members would weigh at least \(25-D>21\). For each \(A\in\F\),
+\(\sum_{x\in A} d_x\ge t+3\) by counting the intersection with every
+member, including \(A\) itself. Since every vertex lies in some \(A\)
+and the other three degrees sum to at most 12, \(d_x\ge t-9\).
+Also \(\sum_xd_x=4t\). Double counting now gives
+\[
+(t-9)(56-4t)\ \le\ \sum_x d_x(4-d_x)
+=\sum_{A\in\F}\sum_{x\in A}(4-d_x)\ \le\ t(13-t).
+\]
+For \(t=11,12,13,14\) the left and right sides are respectively
+\((24,22),(24,12),(16,0),(0,-14)\). Each contradicts the inequality.
+\end{proof}
+
+\begin{lemma}\label{lem:outside}
+Any vertex outside all members of \(\G\) lies in at least five members
+of \(\F\). If \(\G\ne\varnothing\) and \(O\) is a set of such vertices,
+then \(4|O|\le 3D\).
+\end{lemma}
+\begin{proof}
+Let \(x\) be such a vertex and \(k=d_x\ge1\). For each incident four-set
+\(A\), summing the loads on \(A\setminus\{x\}\) gives
+\(63\ge W-\ell_x+3w_A\), since every pattern missing \(x\) meets
+\(A\) elsewhere. Summing over the \(k\) choices of \(A\) gives
+\(63k\ge kW+(3-k)\ell_x\). For \(k\le3\) this implies \(W\le63\).
+For \(k=4\) it implies \(4W\le252+21\). Thus \(k\ge5\) and the
+deficit of the incident four-sets is \(5k-\ell_x\ge4\).
+Each four-set meets a member of \(\G\), so it has at most three vertices
+in \(O\). Summing the deficits on \(O\) proves the claim.
+\end{proof}
+
+\section{Reduction to two five-element patterns}
+By Lemma~\ref{lem:small}, \(5t=W-H+D>69-18+4=55\).
+Thus \(t\ge12\) and \(|\G|\le2\). If \(\G\) were empty then
+\(D=5t-W<1\). If \(\G=\{Q\}\), then \(t\le13\), so
+\(w_Q=D+W-5t>8\). Since \(E=(|Q|-4)w_Q<18\), \(|Q|\le6\).
+For \(|Q|=5\), equation~\eqref{eq:edge} gives \(w_Q<9\); for
+\(|Q|=6\), the same bound follows from \(E<18\). Consequently \(D<5\).
+At least eight vertices lie outside \(Q\), contradicting
+Lemma~\ref{lem:outside}.
+
+We have \(t=12\) and two members of \(\G\), of total weight
+\(H=W-60+D>13\). At least one, \(Q\), has size five, since otherwise
+\(E\ge2H\). Suppose the other, \(R\), has size at least six and weight
+\(g\). Then \(g=H-w_Q>4\). If \(|R|\ge7\), then \(E\ge H+2g>21\).
+If \(|R|=6\), then \(E=H+g=2H-w_Q<18\), hence \(H<27/2\) and
+\(D<9/2\). As \(Q\) meets \(R\), at least four vertices are outside
+both, which would give \(16\le 3D<27/2\).
+It remains to consider two five-element patterns \(Q_1,Q_2\).
+
+\section{Two five-element patterns}
+Let \(I=Q_1\cap Q_2\), \(j=|I|\ge1\), and \(O=V\setminus(Q_1\cup Q_2)\),
+so \(|O|=4+j\). Now \(E=H\) and \(D=60-W+H<9\).
+Lemma~\ref{lem:outside} gives \(4(4+j)\le3D<27\), whence \(j\le2\).
+Write \(m\) for the number of four-sets meeting \(I\) and \(D_I\)
+for their total deficit. A four-set missing \(I\) meets the two
+five-sets in different vertices and has at most two vertices in \(O\).
+A four-set meeting \(I\) has at most three. Consequently
+\begin{equation}\label{eq:outside}
+ 5|O|\le 24+m,\qquad 4|O|\le2D+D_I .
+\end{equation}
+
+\emph{Two common vertices.}
+Here \(|O|=6\), \(D\ge8\) and \(H=W-60+D>17\). By
+\eqref{eq:outside}, \(m\ge6\). The four-sets meeting \(I\) weigh at
+least \(30-D>21\). But the two vertices in \(I\) can carry at most
+\(2(21-H)<8\) from these four-sets.
+
+\emph{One common vertex.}
+Write \(I=\{v\}\) and \(s_v=21-\ell_v\). Then \(0\le s_v\le S\) and
+\(D_I=5m-21+H+s_v\). If \(m\ge3\), the load at \(v\) is at least
+\(H+15-D=W-45>24\). If \(m\le1\), the second bound in
+\eqref{eq:outside} gives
+\[
+20\le2D+D_I\le104-2W+3H+s_v
+ <20-3S+s_v\le20,
+\]
+where \(H=294-4W-S<18-S\). Hence \(m=2\), and the ten four-sets
+missing \(v\) have total deficit \(D-D_I=71-W-s_v<2\).
+
+Any two of those ten four-sets \(A,B\) meet in exactly one vertex. A
+second common vertex would give \(3\delta_A+\delta_B>5\) and
+\(3\delta_B+\delta_A>5\) by \eqref{eq:repeats}, so their total deficit
+would exceed \(5/2\). Furthermore \(20\le3D\) gives \(H>47/3\).
+Each five-set therefore weighs more than \(47/3-9=20/3\). A four-set
+missing \(v\) has \(\delta_A<2\), so \eqref{eq:repeats} forces it to
+meet each five-set exactly once. Its remaining two vertices are in \(O\).
+
+Group the ten four-sets by their unique vertex in \(Q_1\setminus\{v\}\).
+Within a group their outside pairs must be disjoint, since the four-sets
+already share the vertex indexing their group. Five outside vertices
+accommodate at most two disjoint pairs. The four groups can therefore
+hold at most eight four-sets. This contradiction establishes
+Theorem~\ref{thm:main}.
+
+\section*{Prior work and verification}
+Mills determined the relevant covering ratios through thirteen blocks
+\cite{mills,hhs}. Guiduli and Kir\'aly distinguish the one-vertex
+quantity studied here from their two-vertex parameter \(M_2\) \cite{gk}.
+F\"uredi's uniform fractional matching bound \cite{furedi} gives
+\(\nu^*\le 3+1/4\) for an intersecting 4-uniform hypergraph.
+The order-three projective plane attains that value on thirteen vertices.
+Our lower bound allows patterns of different sizes, as does Barker's
+construction. The La Jolla archive credits Barker with the
+\((69,21,2)\) covering on 28 December 2008 \cite{barker}. Among the
+716 pair-covering entries of size at most fourteen in version 1.2.1 of
+that archive, \(21/69\) is the least \(k/v\). A finite table of
+constructions alone cannot certify a lower bound for arbitrary weights.
+
+We recovered the witness using floating-point linear programs to
+evaluate local changes to supports initialized from the order-three
+projective plane. With capacities four, two of three runs found the
+support attaining mass \(92/7\). The mathematical proof uses the
+displayed integer witness and exact inequalities. A separate Python
+verifier expands the witness and checks every point pair.
+Lean~4.24.0 checks the construction and the universal lower bound over
+real weights. The accompanying sources expose the normalized result
+as \texttt{L14.mills\_eq\_seven\_twentyThree}.
+
+\paragraph{Contributions.} Troy Valiyaparampil posed the research
+question, proposed testing \(4/13\), and requested formal verification.
+GPT-6.2 Astra, working in OpenAI Codex, coordinated the research,
+developed and checked the argument, and drafted the manuscript. GPT-6.2
+Sol sessions contributed the search, proof arguments, source checks and
+Lean modules.
+
+\begin{thebibliography}{9}\small
+\bibitem{mills} W.~H. Mills, Covering designs I. Coverings by a small
+number of subsets, \emph{Ars Combinatoria} \textbf{8} (1979), 199--315.
+\bibitem{furedi} Z. F\"uredi, Maximum degree and fractional matchings in
+uniform hypergraphs, \emph{Combinatorica} \textbf{1} (1981), 155--162.
+\href{https://doi.org/10.1007/BF02579271}{doi:10.1007/BF02579271}.
+\bibitem{furedi90} Z. F\"uredi, Covering pairs by \(q^2+q+1\) sets,
+\emph{Journal of Combinatorial Theory, Series A} \textbf{54} (1990),
+248--271, Conjecture (6.3), p.~257.
+\href{https://doi.org/10.1016/0097-3165(90)90034-T}{doi:10.1016/0097-3165(90)90034-T}.
+\bibitem{furedi94} Z. F\"uredi, Intersecting designs from linear
+programming and graphs of diameter two, \emph{Discrete Mathematics}
+\textbf{127} (1994), 187--207, Problem~4.8 and Conjecture~4.9, p.~193.
+\href{https://doi.org/10.1016/0012-365X(92)00478-A}{doi:10.1016/0012-365X(92)00478-A}.
+\bibitem{gk} B. Guiduli and Z. Kir\'aly, On intersecting hypergraphs,
+\emph{Discrete Mathematics} \textbf{182} (1998), 139--151.
+\href{https://doi.org/10.1016/S0012-365X(97)00136-2}{doi:10.1016/S0012-365X(97)00136-2}.
+\bibitem{hhs} J. Hall, D. Horsley and D.~R. Stinson, Bounds on data
+limits for all-to-all comparison from combinatorial designs,
+\emph{Designs, Codes and Cryptography} \textbf{92} (2024), 2863--2879.
+\href{https://doi.org/10.1007/s10623-024-01418-6}{doi:10.1007/s10623-024-01418-6}.
+\bibitem{barker} C. Barker, 14-block covering of 69 points by 21-subsets
+(2008), in D.~M. Gordon, \emph{La Jolla Coverings Repository}, v1.2.1,
+10 November 2026, entry \(C(69,21,2)\).
+\href{https://doi.org/10.5281/zenodo.24119701}{doi:10.5281/zenodo.24119701}.
+\end{thebibliography}
+\end{document}

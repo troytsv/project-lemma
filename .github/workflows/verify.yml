@@ -22,6 +22,10 @@ jobs:
           python search/verify_dual.py baseline/known15.txt
           python -B -m unittest discover -s search -v
           python check_ranks.py
+      - name: Verify the 14-block witness and Barker relabeling
+        run: |
+          python l14/classify/verify_witness.py
+          python l14/classify/verify_barker.py
 
   lean:
     name: Lean proof and axiom audit
@@ -44,8 +48,10 @@ jobs:
           tar --extract --zstd --file "$RUNNER_TEMP/$archive" --directory "$RUNNER_TEMP"
           echo "$RUNNER_TEMP/lean-4.24.0-linux/bin" >> "$GITHUB_PATH"
       - name: Retrieve the pinned mathlib build cache
-        run: lake exe cache get Mathlib.Tactic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
+        run: lake exe cache get Mathlib.Tactic Mathlib.Data.Real.Basic Mathlib.LinearAlgebra.FiniteDimensional.Basic Mathlib.LinearAlgebra.Dimension.Constructions
       - name: Build the proof
-        run: lake build
-      - name: Check the theorem statement and axiom dependencies
+        run: lake --wfail build
+      - name: Audit the C(70,21,2) theorem
         run: lake env lean -DwarningAsError=true Audit.lean
+      - name: Audit the L(14) theorem
+        run: lake env lean -DwarningAsError=true AuditL14.lean

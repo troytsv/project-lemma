@@ -1,17 +1,20 @@
 cff-version: 1.2.0
-message: "If you use this proof or its verification code, please cite this work."
-title: "The exact covering number C(70,21,2) is 15"
+message: "If you use these proofs or their verification code, please cite this work."
+title: "Project Lemma: C(70,21,2) and the first Mills number L(14)"
 type: software
 authors:
   - family-names: Valiyaparampil
     given-names: Troy
 abstract: >-
-  Lean 4 proof that fourteen blocks cannot cover all pairs of a 70-point set
-  with blocks of size 21, accompanied by verifiers for an existing 15-block
-  certificate. The paper credits Troy Valiyaparampil and GPT-6.2 Astra.
-  GPT-6.2 Astra developed the argument and drafted the paper in OpenAI Codex.
-  GPT-6.2 Sol sessions contributed review, certificate checks and Lean modules.
+  Lean 4 proofs that the covering number C(70,21,2) is 15 and the first
+  Mills number L(14) is 7/23. The latter verifies the q=3 case of
+  Füredi's conjecture from 1990 and 1994. The repository includes independent covering
+  certificate verifiers. The papers credit Troy Valiyaparampil and GPT-6.2
+  Astra. GPT-6.2 Sol sessions contributed review, certificate checks, and
+  Lean modules.
+license: MIT
 keywords:
   - covering designs
   - Lean 4
   - fractional matchings
+  - Mills numbers
