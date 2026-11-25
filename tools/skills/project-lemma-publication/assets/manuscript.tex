@@ -1,0 +1,41 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+% Replace every invocation of DraftField and remove this macro before release.
+\newcommand{\DraftField}[1]{\textit{[#1]}}
+\title{\DraftField{Title}}
+\author{Troy Valiyaparampil\\{\small Independent researcher}}
+\date{\DraftField{Publication date and version}}
+\begin{document}
+\maketitle
+\begin{abstract}
+\DraftField{State the precise result, assumptions, proof idea and significance.}
+\end{abstract}
+\noindent\textbf{Keywords}\quad \DraftField{Keywords}\par
+\noindent\textbf{MSC 2020}\quad \DraftField{Subject classifications}
+
+\section{Problem and prior work}
+\DraftField{Define the objects and quantifiers. Cite original sources. Separate the known directions, contributions and limits of the priority search.}
+\section{Main result}
+\begin{theorem}
+\DraftField{Statement, hypotheses and boundary cases}
+\end{theorem}
+\begin{proof}
+\DraftField{Proof}
+\end{proof}
+\section{Consequences}
+\DraftField{Proved corollaries and provenance of constructions}
+\section{Verification and data availability}
+\DraftField{Computation, independent certificates, formal contracts, trusted assumptions, replay commands and the versioned public artifact}
+\section*{Statements and declarations}
+\paragraph{Funding.} No external funding was received for this research. The author used personally funded computing resources and a commercially available AI subscription.
+\paragraph{Competing interests.} \DraftField{Obtain the declaration for this investigation.}
+\paragraph{Contributions and use of AI.} \DraftField{Describe actual contributions to question selection, hypotheses, proofs, experiments, formalization, drafting and review. Name the tools, people and evidence.}
+\paragraph{Correspondence.} Corrections may be sent through the
+\href{https://github.com/troytsv/project-lemma/issues}{Project Lemma issue tracker}.
+% Add references.bib with verified records; cite them in the text.
+\IfFileExists{references.bib}{\bibliographystyle{plain}\bibliography{references}}{}
+\end{document}

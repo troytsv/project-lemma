@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Please cite this investigation and consult its contribution disclosure."
+title: TITLE_JSON
+authors:
+  - family-names: Valiyaparampil
+    given-names: Troy
+repository-code: "https://github.com/troytsv/project-lemma"
+license: CC-BY-4.0
+# Add verified version, date-released, release URL and preferred-citation at release.

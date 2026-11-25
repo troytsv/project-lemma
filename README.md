@@ -21,3 +21,5 @@ The theorem gives $C(70,21,2)=C(33,10,2)=C(43,13,2)=15$. For every positive inte
 We look for questions whose status can be checked against primary sources. A proof establishes a mathematical statement. A literature search addresses priority. Formal verification and explicit construction certificates give readers ways to check the reasoning independently. Each problem reports which checks ran and whether the work has received peer review.
 
 Independent scrutiny, corrections and references to earlier work are welcome through [GitHub Issues](https://github.com/troytsv/project-lemma/issues). Identify the problem number and the statement or source involved. [Research directory](problems/README.md) · [AI contributions](AI_DISCLOSURE.md) · [Licensing](LICENSING.md) · [How to contribute](CONTRIBUTING.md)
+
+The [Project Lemma publication skill](tools/skills/project-lemma-publication/SKILL.md) contains the maintainer workflow for preparing, publishing, auditing and disseminating an investigation.

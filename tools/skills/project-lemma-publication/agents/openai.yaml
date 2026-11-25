@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Lemma Publication"
+  short_description: "Prepare, publish, and audit Project Lemma research"
+  default_prompt: "Use $project-lemma-publication to audit the release for Problem 001."
