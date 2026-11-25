@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project Lemma Discovery"
+  short_description: "Screen and probe open mathematical problems"
+  default_prompt: "Use $project-lemma-discovery to shortlist mathematical opportunities in Project Lemma."
